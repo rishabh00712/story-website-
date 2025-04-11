@@ -1,0 +1,1311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kids Adventure Site</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Comic Sans MS', cursive, sans-serif;
+      background-color: #fef6e4;
+      overflow-x: hidden;
+    }
+
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background-color: #ffcb77;
+      padding: 1rem 2rem;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .logo {
+      font-size: 1.8rem;
+      font-weight: bold;
+      color: #4d4dff;
+      animation: bounce 2s infinite;
+    }
+
+    .nav-links {
+      list-style: none;
+      display: flex;
+      gap: 1.5rem;
+      font-size: 1.1rem;
+      color: #333;
+    }
+
+    .nav-links li:hover {
+      color: #ff6b6b;
+      cursor: pointer;
+    }
+
+    .icons span {
+      margin-left: 1rem;
+      font-size: 1.5rem;
+      cursor: pointer;
+    }
+
+    .hero-carousel {
+      position: relative;
+      width: 100%;
+      height: 80vh;
+      overflow: hidden;
+    }
+
+ 
+
+    .text button, .age-buttons button, .newsletter button {
+      padding: 0.7rem 1.5rem;
+      background-color: #4d4dff;
+      color: white;
+      border: none;
+      border-radius: 10px;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    .text button:hover {
+      background-color: #3434cc;
+    }
+
+    .carousel-controls {
+      position: absolute;
+      bottom: 10px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      gap: 2rem;
+    }
+
+    .carousel-controls span {
+      font-size: 2rem;
+      cursor: pointer;
+      user-select: none;
+    }
+
+    .newsletter input {
+      padding: 0.5rem;
+      margin: 0.5rem;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+    }
+
+    @keyframes bounce {
+      0%, 100% {
+        transform: translateY(0);
+      }
+      50% {
+        transform: translateY(-10px);
+      }
+    }
+
+    @keyframes float {
+      0%, 100% {
+        transform: translateY(0);
+      }
+      50% {
+        transform: translateY(-8px);
+      }
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: scale(0.95);
+      }
+      to {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+    .hero-wrapper {
+    width: 100%;
+    background: linear-gradient(135deg, #fff5f5, #ffe7e7);
+    padding: 60px 0;
+    font-family: 'Poppins', sans-serif;
+  }
+
+  .hero-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 30px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 40px;
+    flex-wrap: wrap;
+  }
+
+  .hero-text {
+    flex: 1;
+    min-width: 300px;
+  }
+
+  .hero-text h1 {
+    font-size: 2.5rem;
+    color: #333;
+    margin-bottom: 20px;
+  }
+
+  .hero-text p {
+    font-size: 1.2rem;
+    color: #555;
+    line-height: 1.6;
+    margin-bottom: 30px;
+  }
+
+  .hero-cta {
+    background-color: #ff6b6b;
+    color: #fff;
+    padding: 12px 30px;
+    border-radius: 30px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background 0.3s ease;
+  }
+
+  .hero-cta:hover {
+    background-color: #ff4b4b;
+  }
+
+  .hero-image {
+    flex: 1;
+    min-width: 280px;
+    text-align: right;
+  }
+
+  .hero-image img {
+    max-width: 100%;
+    border-radius: 20px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  }
+
+  @media (max-width: 768px) {
+    .hero-container {
+      flex-direction: column;
+      text-align: center;
+    }
+
+    .hero-image {
+      text-align: center;
+    }
+  }
+  /* ........................................... */
+  .age-section {
+    text-align: center;
+    padding: 60px 20px;
+    font-family: 'Poppins', sans-serif;
+    background: #fff;
+  }
+
+  .age-section h2 {
+    font-size: 2.2rem;
+    font-weight: 700;
+    display: inline-block;
+    background: #e2e2e2;
+    padding: 8px 20px;
+    border-radius: 5px;
+    margin-bottom: 50px;
+  }
+
+  .age-cards {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
+  }
+
+  .age-card {
+    width: 300px;
+    height: 150px;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    overflow: hidden;
+    padding: 0 15px;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease;
+  }
+
+  .age-card:hover {
+    transform: scale(1.03);
+  }
+
+  .age-text {
+    text-align: left;
+    color: #000;
+  }
+
+  .age-title {
+    display: block;
+    font-size: 0.9rem;
+    font-weight: 600;
+    letter-spacing: 1px;
+  }
+
+  .age-range {
+    display: block;
+    font-size: 1.4rem;
+    font-style: italic;
+    font-weight: 600;
+  }
+
+  .age-card img {
+    height: 100%;
+    width: auto;
+    object-fit: cover;
+    border-radius: 10px;
+  }
+
+  @media (max-width: 768px) {
+    .age-cards {
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .age-card {
+      width: 90%;
+      height: auto;
+      flex-direction: row;
+    }
+
+    .age-card img {
+      width: 100px;
+      height: 100px;
+    }
+  }
+  /*.........................................................*/
+  
+  .why-section {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    padding: 60px 30px;
+    background-color: #fffefa;
+    font-family: 'Poppins', sans-serif;
+    gap: 40px;
+    justify-content: center;
+  }
+
+  .why-left {
+    flex: 1;
+    min-width: 280px;
+    max-width: 400px;
+  }
+
+  .why-tag {
+    font-size: 0.9rem;
+    color: #666;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+  }
+
+  .why-left h2 {
+    font-size: 2.5rem;
+    margin-bottom: 25px;
+    color: #222;
+  }
+
+  .why-btn {
+    background-color: #34a853;
+    color: #fff;
+    padding: 12px 24px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: background 0.3s ease;
+  }
+
+  .why-btn:hover {
+    background-color: #2e9048;
+  }
+
+  .why-right {
+    flex: 2;
+    min-width: 320px;
+  }
+
+  .why-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 25px;
+  }
+
+  .why-card {
+    background: #eee;
+    border-radius: 20px;
+    padding: 25px 15px;
+    text-align: center;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.07);
+    transition: transform 0.3s ease;
+  }
+
+  .why-card:hover {
+    transform: translateY(-5px);
+  }
+
+  .why-card span {
+    font-size: 2rem;
+    display: block;
+    margin-bottom: 10px;
+  }
+
+  .why-card p {
+    font-size: 1rem;
+    font-weight: 500;
+    color: #333;
+    line-height: 1.4;
+  }
+
+  @media (max-width: 768px) {
+    .why-section {
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+
+    .why-left h2 {
+      font-size: 2rem;
+    }
+
+    .why-grid {
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    }
+  }
+
+  /*.......................................................*/
+  .quiz-section {
+    padding: 50px 20px;
+    background: #fffdf4;
+    text-align: center;
+    font-family: 'Poppins', sans-serif;
+  }
+
+  .slider-wrapper {
+    position: relative;
+    max-width: 800px;
+    margin: 0 auto;
+    overflow: hidden;
+  }
+
+  .slider-track {
+    display: flex;
+    transition: transform 0.4s ease;
+  }
+
+  .slide {
+    min-width: 100%;
+    box-sizing: border-box;
+    padding: 20px;
+    cursor: pointer;
+  }
+
+  .slide img {
+    width: 100%;
+    border-radius: 16px;
+    max-height: 400px;
+    object-fit: cover;
+  }
+
+  .question-text {
+    font-size: 1.5rem;
+    margin-top: 15px;
+    font-weight: 600;
+  }
+
+  .nav-btn {
+    position: absolute;
+    top: 45%;
+    transform: translateY(-50%);
+    background: #222;
+    color: #fff;
+    font-size: 2rem;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    z-index: 2;
+  }
+
+  .prev { left: 10px; }
+  .next { right: 10px; }
+
+  /* MCQ Modal */
+  .mcq-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0,0,0,0.6);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 999;
+  }
+
+  .modal-content {
+    background: #fff;
+    padding: 30px;
+    border-radius: 16px;
+    text-align: center;
+    max-width: 400px;
+    width: 90%;
+    box-shadow: 0 8px 30px rgba(0,0,0,0.2);
+  }
+
+  .modal-content h3 {
+    margin-bottom: 20px;
+  }
+
+  .modal-content .options label {
+    display: block;
+    margin: 10px 0;
+    font-size: 1rem;
+  }
+
+  .close-modal {
+    margin-top: 20px;
+    background: #ff5757;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+  }
+
+  .hidden {
+    display: none;
+  }
+  /* .............................................. */
+  .review-section {
+    background: #ffc943;
+    padding: 60px 20px;
+    text-align: center;
+    font-family: 'Poppins', sans-serif;
+  }
+
+  .review-section h2 {
+    font-size: 2.2rem;
+    margin-bottom: 40px;
+    color: #1c1c1c;
+  }
+
+  .review-section h2 span {
+    font-weight: bold;
+  }
+
+  .review-slider-wrapper {
+    position: relative;
+    overflow: hidden;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .review-slider-track {
+    display: flex;
+    gap: 20px;
+    transition: transform 0.4s ease;
+  }
+
+  .review-card {
+    background: #fff;
+    border-radius: 16px;
+    padding: 20px;
+    text-align: center;
+    width: 300px;
+    flex-shrink: 0;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+  }
+
+  .review-card img {
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+    border-radius: 50%;
+    margin-bottom: 15px;
+  }
+
+  .stars {
+    color: #00b67a;
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+    letter-spacing: 2px;
+  }
+
+  .review-text {
+    font-size: 1rem;
+    color: #333;
+    margin-bottom: 15px;
+    min-height: 60px;
+  }
+
+  .review-name {
+    font-size: 0.85rem;
+    color: #888;
+  }
+
+  .review-nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: #111;
+    color: #fff;
+    font-size: 1.5rem;
+    padding: 5px 10px;
+    border-radius: 50%;
+    cursor: pointer;
+    z-index: 10;
+    border: none;
+  }
+
+  .review-nav.prev { left: -10px; }
+  .review-nav.next { right: -10px; }
+
+  .trustpilot-note {
+    margin-top: 30px;
+    font-size: 1rem;
+    color: #1a1a1a;
+  }
+
+  @media (max-width: 768px) {
+    .review-card {
+      width: 90%;
+    }
+
+    .review-slider-track {
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .review-nav {
+      display: none;
+    }
+  }
+
+  /* ................................................ */
+  .how-it-works {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 40px;
+    padding: 60px 30px;
+    flex-wrap: wrap;
+    background: #fffef9;
+    font-family: 'Poppins', sans-serif;
+  }
+
+  .how-left {
+    flex: 1;
+    min-width: 300px;
+    position: relative;
+  }
+
+  .image-stack {
+    position: relative;
+    width: 100%;
+    max-width: 500px;
+    margin: 0 auto;
+  }
+
+  .child-img {
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    border-radius: 20px;
+    object-fit: cover;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  }
+
+  .top-left {
+    top: 0;
+    left: 10%;
+    transform: rotate(-10deg);
+  }
+
+  .top-right {
+    top: 20%;
+    right: 5%;
+    transform: rotate(10deg);
+  }
+
+  .bottom-left {
+    bottom: 25%;
+    left: 15%;
+    transform: rotate(-6deg);
+  }
+
+  .book-img {
+    width: 100%;
+    max-width: 300px;
+    position: relative;
+    margin-top: 200px;
+  }
+
+  .how-right {
+    flex: 1;
+    min-width: 300px;
+  }
+
+  .how-right h2 {
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: 30px;
+  }
+
+  .step {
+    margin-bottom: 25px;
+  }
+
+  .step h4 {
+    font-size: 1rem;
+    font-style: italic;
+    font-weight: 600;
+    color: #333;
+  }
+
+  .step p {
+    font-size: 0.95rem;
+    color: #555;
+    margin-top: 8px;
+  }
+
+  @media (max-width: 768px) {
+    .how-it-works {
+      flex-direction: column;
+      text-align: center;
+    }
+
+    .child-img {
+      position: static;
+      display: inline-block;
+      margin: 10px;
+    }
+
+    .book-img {
+      margin-top: 30px;
+    }
+  }
+  /* .................................................. */
+  .heroSimpleWrapper {
+    max-width: 1200px;
+    margin: 0 auto;
+    overflow: hidden;
+  }
+
+  .heroSimpleSliderContainer {
+    position: relative;
+    background: #f6f9fc;
+  }
+
+  .heroSimpleSliderTrack {
+    display: flex;
+    transition: transform 0.6s ease-in-out;
+  }
+
+  .heroSimpleSlide {
+    min-width: 100%;
+    display: flex;
+    align-items: center;
+    padding: 60px 5%;
+    gap: 40px;
+  }
+
+  .heroSimpleLeft {
+    flex: 1;
+  }
+
+  .heroSimpleLeft img {
+    width: 100%;
+    border-radius: 16px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+  }
+
+  .heroSimpleRight {
+    flex: 1;
+    color: #002244;
+  }
+
+  .heroSimpleRight h1 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 20px;
+    line-height: 1.3;
+  }
+
+  .heroSimpleRight p {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    margin-bottom: 30px;
+    color: #444;
+  }
+
+  .heroSimpleBtn {
+    display: inline-block;
+    background: #002244;
+    color: #fff;
+    padding: 12px 28px;
+    border-radius: 30px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: background 0.3s ease;
+  }
+
+  .heroSimpleBtn:hover {
+    background: #334466;
+  }
+
+  .heroSimpleNav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: #002244;
+    color: #fff;
+    font-size: 2rem;
+    padding: 6px 14px;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    z-index: 2;
+  }
+
+  .heroSimpleNav.prev {
+    left: 15px;
+  }
+
+  .heroSimpleNav.next {
+    right: 15px;
+  }
+
+  @media (max-width: 768px) {
+    .heroSimpleSlide {
+      flex-direction: column;
+      text-align: center;
+    }
+
+    .heroSimpleRight h1 {
+      font-size: 2rem;
+    }
+
+    .heroSimpleRight p {
+      font-size: 1rem;
+    }
+  }
+
+  .storybookFooter {
+    background: #ff6b35;
+    color: #fff;
+    font-family: 'Poppins', sans-serif;
+  }
+
+  .storybookFooterContainer {
+    display: flex;
+    justify-content: space-between;
+    padding: 60px 50px 30px;
+    flex-wrap: wrap;
+    max-width: 1300px;
+    margin: 0 auto;
+  }
+
+  .storybookFooterLogo {
+    font-size: 2rem;
+    font-weight: bold;
+    color: white;
+  }
+
+  .storybookFooterLogo span {
+    display: block;
+    font-size: 2.8rem;
+    line-height: 1;
+  }
+
+  .storybookFooterColumns {
+    display: flex;
+    gap: 60px;
+    margin-top: 40px;
+  }
+
+  .storybookFooterCol h4 {
+    margin-bottom: 15px;
+    font-size: 1rem;
+    color: white;
+  }
+
+  .storybookFooterCol ul {
+    list-style: none;
+    padding: 0;
+  }
+
+  .storybookFooterCol ul li {
+    margin-bottom: 10px;
+  }
+
+  .storybookFooterCol ul li a {
+    text-decoration: none;
+    color: white;
+    font-size: 0.95rem;
+  }
+
+  .storybookFooterRight {
+    text-align: right;
+    min-width: 260px;
+  }
+
+  .storybookFooterQuote {
+    font-size: 1rem;
+    margin-bottom: 30px;
+    color: white;
+  }
+
+  .storybookFooterSocial p {
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+
+  .storybookFooterSocial a {
+    margin-right: 10px;
+  }
+
+  .storybookFooterSocial img {
+    width: 24px;
+    height: 24px;
+    vertical-align: middle;
+  }
+
+  .storybookFooterBottom {
+    text-align: center;
+    padding: 20px 0;
+    background: #ff5c1e;
+  }
+
+  .storybookFooterBottom img {
+    height: 30px;
+    margin-bottom: 10px;
+  }
+
+  .storybookFooterBottom p {
+    font-size: 0.9rem;
+    color: #fff;
+  }
+
+  @media (max-width: 768px) {
+    .storybookFooterContainer {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 30px;
+    }
+
+    .storybookFooterRight {
+      text-align: left;
+    }
+
+    .storybookFooterColumns {
+      flex-direction: column;
+      gap: 30px;
+    }
+  }
+  </style>
+</head>
+<body>
+  <nav class="navbar">
+    <div class="logo">✨KiddieWorld</div>
+    <ul class="nav-links">
+      <li>Home</li>
+      <li>Books</li>
+      <li>Games</li>
+      <li>Activities</li>
+      <li>About Us</li>
+      <li>Contact</li>
+    </ul>
+    <div class="icons">
+      <span class="profile">👤</span>
+      <span class="cart">🛒</span>
+    </div>
+  </nav>
+  <div class="hero-wrapper">
+    <div class="hero-container">
+      <div class="hero-text">
+        <h1>Turn your little one into<br>the hero of their own story.</h1>
+        <p>
+          Personalised books and gifts that spark<br>
+          imagination, build confidence, and<br>
+          create lasting memories.
+        </p>
+        <a href="#get-started" class="hero-cta">Create Your Book</a>
+      </div>
+      <div class="hero-image">
+        <img src="https://cdn.pixabay.com/photo/2017/07/24/16/59/baby-2536518_1280.jpg" alt="Happy Baby" />
+      </div>
+    </div>
+  </div>
+ <!-- ............................................................. -->
+
+ <div class="age-section">
+    <h2>Who are you shopping for?</h2>
+    <div class="age-cards">
+      <div class="age-card" style="background-color: #a8e844;">
+        <div class="age-text">
+          <span class="age-title">TINY EXPLORERS</span>
+          <span class="age-range">0–3 YEARS</span>
+        </div>
+        <img src="https://cdn.pixabay.com/photo/2017/08/06/23/43/baby-2596615_1280.jpg" alt="Tiny Explorers">
+      </div>
+  
+      <div class="age-card" style="background-color: #ff7b5f;">
+        <div class="age-text">
+          <span class="age-title">WONDER SEEKERS</span>
+          <span class="age-range">3–6 YEARS</span>
+        </div>
+        <img src="https://cdn.pixabay.com/photo/2016/03/27/22/16/kid-1283961_1280.jpg" alt="Wonder Seekers">
+      </div>
+  
+      <div class="age-card" style="background-color: #59c7f9;">
+        <div class="age-text">
+          <span class="age-title">ADVENTURE MASTERS</span>
+          <span class="age-range">6+ YEARS</span>
+        </div>
+        <img src="https://cdn.pixabay.com/photo/2015/03/28/16/40/girl-696996_1280.jpg" alt="Adventure Masters">
+      </div>
+    </div>
+  </div>
+  <!-- ........................................................... -->
+  <div class="heroSimpleWrapper">
+    <div class="heroSimpleSliderContainer">
+      <div class="heroSimpleSliderTrack">
+  
+        <!-- Slide 1 -->
+        <div class="heroSimpleSlide">
+          <div class="heroSimpleLeft">
+            <img src="https://cdn.pixabay.com/photo/2023/08/29/20/00/ai-generated-8221004_1280.jpg" alt="Hero Illustration">
+          </div>
+          <div class="heroSimpleRight">
+            <h1>The only storybooks where <br>they're the hero</h1>
+            <p>
+              Turn your child's photos into a magical, AI-generated storybook.<br>
+              Let them be the star of their own adventure!
+            </p>
+            <a href="#" class="heroSimpleBtn">Create My Child's Book</a>
+          </div>
+        </div>
+  
+        <!-- Slide 2 -->
+        <div class="heroSimpleSlide">
+          <div class="heroSimpleLeft">
+            <img src="https://cdn.pixabay.com/photo/2023/06/08/07/01/ai-generated-8050647_1280.jpg" alt="Hero Illustration 2">
+          </div>
+          <div class="heroSimpleRight">
+            <h1>Stories as unique<br>as your child</h1>
+            <p>
+              Upload a few photos and let our AI bring your little one's<br>
+              imagination to life in a personalized, one-of-a-kind storybook.
+            </p>
+            <a href="#" class="heroSimpleBtn">Get Started</a>
+          </div>
+        </div>
+  
+      </div>
+  
+      <!-- Navigation -->
+      <button class="heroSimpleNav prev">❮</button>
+      <button class="heroSimpleNav next">❯</button>
+    </div>
+  </div>
+  
+  <!-- ......................................................... -->
+  <div class="why-section">
+    <div class="why-left">
+      <p class="why-tag">🌟 WHERE EVERY CHILD'S THE STAR</p>
+      <h2>Why we do<br>what we do</h2>
+      <a href="#about" class="why-btn">ABOUT US</a>
+    </div>
+  
+    <div class="why-right">
+      <div class="why-grid">
+        <div class="why-card" style="background:#fbd1ff;">
+          <span>🎒</span>
+          <p>Adventures Made Personal</p>
+        </div>
+        <div class="why-card" style="background:#cfd2ff;">
+          <span>🦸‍♂️</span>
+          <p>Your Child, the Hero</p>
+        </div>
+        <div class="why-card" style="background:#ccffcc;">
+          <span>✨</span>
+          <p>Spark the Reading Magic</p>
+        </div>
+        <div class="why-card" style="background:#b3ecff;">
+          <span>📖</span>
+          <p>Stories That Bring Us Closer</p>
+        </div>
+        <div class="why-card" style="background:#ffd6b3;">
+          <span>🌱</span>
+          <p>Growing Confidence Page by Page</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ........................................................... -->
+  
+
+ 
+  <!-- ...................................................... -->
+  <div class="how-it-works">
+    <div class="how-left">
+      <div class="image-stack">
+        <img src="https://cdn.pixabay.com/photo/2021/08/01/12/14/avatar-6516271_1280.png" class="child-img top-left">
+        <img src="https://cdn.pixabay.com/photo/2017/01/31/13/14/avatar-2027366_1280.png" class="child-img top-right">
+        <img src="https://cdn.pixabay.com/photo/2017/01/31/13/14/avatar-2027367_1280.png" class="child-img bottom-left">
+        <img src="https://cdn.pixabay.com/photo/2017/04/04/17/00/open-book-2207747_1280.png" class="book-img">
+        <!-- Optional: add doodle SVGs or PNGs here if available -->
+      </div>
+    </div>
+  
+    <div class="how-right">
+      <h2>How it works?</h2>
+  
+      <div class="step">
+        <h4><em>CHOOSE THE PERFECT STORY</em></h4>
+        <p>Browse our delightful collection of stories and pick the perfect book for your child. There's a special story waiting to become their own.</p>
+      </div>
+  
+      <div class="step">
+        <h4><em>MAKE IT PERSONAL</em></h4>
+        <p>Simply upload 3 photos of your little one, and we'll weave them into the narrative. Include a heartfelt message that will be printed in the book.</p>
+      </div>
+  
+      <div class="step">
+        <h4><em>AWAIT YOUR CREATION</em></h4>
+        <p>While our artists work their wonders, get ready for a uniquely personalised book that will make your child the star of their very own story.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- .................................................. -->
+  <div class="quiz-section">
+    <h2>🧠 Interesting Questions</h2>
+  
+    <div class="slider-wrapper">
+      <button class="nav-btn prev">‹</button>
+      <div class="slider-track">
+        <div class="slide" data-question="What color is the sky?" data-options='["Red","Blue","Green"]'>
+          <img src="https://cdn.pixabay.com/photo/2015/03/04/22/35/children-659368_1280.jpg" alt="Question 1">
+          <p class="question-text">What color is the sky?</p>
+        </div>
+        <div class="slide" data-question="Which animal says 'Meow'?" data-options='["Dog","Cat","Cow"]'>
+          <img src="https://cdn.pixabay.com/photo/2016/11/21/15/49/children-1846025_1280.jpg" alt="Question 2">
+          <p class="question-text">Which animal says "Meow"?</p>
+        </div>
+        <div class="slide" data-question="What do bees make?" data-options='["Milk","Honey","Juice"]'>
+          <img src="https://cdn.pixabay.com/photo/2017/08/01/08/29/girl-2563347_1280.jpg" alt="Question 3">
+          <p class="question-text">What do bees make?</p>
+        </div>
+      </div>
+      <button class="nav-btn next">›</button>
+    </div>
+  </div>
+  
+  <!-- Modal for MCQ -->
+  <div class="mcq-modal hidden">
+    <div class="modal-content">
+      <h3 id="modal-question">Question?</h3>
+      <div class="options" id="modal-options"></div>
+      <button class="close-modal">Close</button>
+    </div>
+  </div>
+  <!-- ..................................................... -->
+  <div class="review-section">
+    <h2>Rated <span>4.9</span> out of 5</h2>
+  
+    <div class="review-slider-wrapper">
+      <button class="review-nav prev">‹</button>
+  
+      <div class="review-slider-track">
+        <!-- Review Card 1 -->
+        <div class="review-card">
+          <img src="https://cdn.pixabay.com/photo/2017/01/31/13/14/avatar-2027366_1280.png" alt="User">
+          <div class="stars">★★★★★</div>
+          <p class="review-text">My Imagitime book for my 4-year-old grandson arrived, and it is fantastic!</p>
+          <span class="review-name">MARY, 2 hours ago</span>
+        </div>
+  
+        <!-- Review Card 2 -->
+        <div class="review-card">
+          <img src="https://cdn.pixabay.com/photo/2017/01/31/13/14/avatar-2027367_1280.png" alt="User">
+          <div class="stars">★★★★★</div>
+          <p class="review-text">My son was overwhelmed to see himself in the book. He shows it to everyone!</p>
+          <span class="review-name">Syed Quadri, 3 hours ago</span>
+        </div>
+  
+        <!-- Review Card 3 -->
+        <div class="review-card">
+          <img src="https://cdn.pixabay.com/photo/2021/08/01/12/14/avatar-6516271_1280.png" alt="User">
+          <div class="stars">★★★★★</div>
+          <p class="review-text">We love Imagitime books! We've purchased four of them — highly recommend!</p>
+          <span class="review-name">Becky Allen, 8 hours ago</span>
+        </div>
+      </div>
+  
+      <button class="review-nav next">›</button>
+    </div>
+  
+    <p class="trustpilot-note">
+      Rated <strong>4.9</strong> / 5 based on <strong>1,548 reviews</strong>. Showing our 5 star reviews.  
+      <br>⭐ <strong style="color:green">Trustpilot</strong>
+    </p>
+  </div>
+<!-- 
+  ...................................................... -->
+  <footer class="storybookFooter">
+    <div class="storybookFooterContainer">
+  
+      <div class="storybookFooterLeft">
+        <div class="storybookFooterLogo">make me <span>Hero</span></div>
+  
+        <div class="storybookFooterColumns">
+          <div class="storybookFooterCol">
+            <h4>HELP AND INFORMATION</h4>
+            <ul>
+              <li><a href="#">FAQs</a></li>
+              <li><a href="#">Bulk Orders</a></li>
+            </ul>
+          </div>
+  
+          <div class="storybookFooterCol">
+            <h4>QUICK LINKS</h4>
+            <ul>
+              <li><a href="#">About Us</a></li>
+              <li><a href="#">Shop Collection</a></li>
+              <li><a href="#">Contact Us</a></li>
+            </ul>
+          </div>
+  
+          <div class="storybookFooterCol">
+            <h4>CORPORATE INFORMATION</h4>
+            <ul>
+              <li><a href="#">Privacy Policy</a></li>
+              <li><a href="#">Return Policy</a></li>
+              <li><a href="#">Terms of Service</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+  
+      <div class="storybookFooterRight">
+        <p class="storybookFooterQuote">Turn your little one into the hero of their story.</p>
+        <div class="storybookFooterSocial">
+          <p>CONNECT</p>
+          <a href="#"><img src="https://cdn-icons-png.flaticon.com/512/1384/1384063.png" alt="Instagram" /></a>
+          <a href="#"><img src="https://cdn-icons-png.flaticon.com/512/124/124010.png" alt="Facebook" /></a>
+        </div>
+      </div>
+    </div>
+  
+    <div class="storybookFooterBottom">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/3/3d/Curly.svg" alt="doodle" />
+      <p>© 2025, MAKE ME HERO. ALL RIGHTS RESERVED.</p>
+    </div>
+  </footer>
+  
+  <script>
+    
+    
+
+    // ........................................
+    const track = document.querySelector('.slider-track');
+  const slides = document.querySelectorAll('.slide');
+  const nextBtn = document.querySelector('.next');
+  const prevBtn = document.querySelector('.prev');
+  const modal = document.querySelector('.mcq-modal');
+  const modalQuestion = document.getElementById('modal-question');
+  const modalOptions = document.getElementById('modal-options');
+  const closeModal = document.querySelector('.close-modal');
+
+  let index = 0;
+
+  function updateSlider() {
+    track.style.transform = `translateX(-${index * 100}%)`;
+  }
+
+  nextBtn.onclick = () => {
+    index = (index + 1) % slides.length;
+    updateSlider();
+  };
+
+  prevBtn.onclick = () => {
+    index = (index - 1 + slides.length) % slides.length;
+    updateSlider();
+  };
+
+  slides.forEach(slide => {
+    slide.addEventListener('click', () => {
+      const question = slide.getAttribute('data-question');
+      const options = JSON.parse(slide.getAttribute('data-options'));
+      modalQuestion.textContent = question;
+      modalOptions.innerHTML = options.map(opt => `
+        <label><input type="radio" name="mcq"> ${opt}</label>
+      `).join('');
+      modal.classList.remove('hidden');
+    });
+  });
+
+  closeModal.onclick = () => {
+    modal.classList.add('hidden');
+  };
+    
+//.....................................................
+// Modular review slider
+(function initializeReviewSlider() {
+    const sliderTrack = document.querySelector('.review-slider-track');
+    const reviewItems = document.querySelectorAll('.review-slider-track .review-card');
+    const navNextBtn = document.querySelector('.review-slider-btn.next');
+    const navPrevBtn = document.querySelector('.review-slider-btn.prev');
+
+    if (!sliderTrack || !reviewItems.length) return;
+
+    let currentSlideIndex = 0;
+    const cardVisibleCount = 3; // how many cards visible at once
+    const cardWidth = 320; // match this with actual .review-card width + margin
+
+    navNextBtn?.addEventListener('click', () => {
+      const maxIndex = reviewItems.length - cardVisibleCount;
+      currentSlideIndex = Math.min(currentSlideIndex + 1, maxIndex);
+      sliderTrack.style.transform = `translateX(-${currentSlideIndex * cardWidth}px)`;
+    });
+
+    navPrevBtn?.addEventListener('click', () => {
+      currentSlideIndex = Math.max(currentSlideIndex - 1, 0);
+      sliderTrack.style.transform = `translateX(-${currentSlideIndex * cardWidth}px)`;
+    });
+  })();
+
+  let simpleSlideIndex = 0;
+  const simpleSlider = document.querySelector('.heroSimpleSliderTrack');
+  const totalSimpleSlides = document.querySelectorAll('.heroSimpleSlide').length;
+
+  function updateSimpleSlider() {
+    simpleSlider.style.transform = `translateX(-${simpleSlideIndex * 100}%)`;
+  }
+
+  document.querySelector('.heroSimpleNav.next').addEventListener('click', () => {
+    simpleSlideIndex = (simpleSlideIndex + 1) % totalSimpleSlides;
+    updateSimpleSlider();
+  });
+
+  document.querySelector('.heroSimpleNav.prev').addEventListener('click', () => {
+    simpleSlideIndex = (simpleSlideIndex - 1 + totalSimpleSlides) % totalSimpleSlides;
+    updateSimpleSlider();
+  });
+
+  setInterval(() => {
+    simpleSlideIndex = (simpleSlideIndex + 1) % totalSimpleSlides;
+    updateSimpleSlider();
+  }, 5000);
+  </script>
+</body>
+</html>
